@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['POSTGRESQL_ADDRESS'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV["POSTGRESQL_USERNAME"] %>
+  password: <%= ENV["POSTGRESQL_PASSWORD"] %>
+
+
+development:
+  <<: *default
+  database: voting_app_development
+
+test:
+  <<: *default
+  database: voting_app_test
+
+production:
+  <<: *default
+  database: voting_app_production
+  username: voting_app
+  password: <%= ENV['VOTING-APP_DATABASE_PASSWORD'] %>
