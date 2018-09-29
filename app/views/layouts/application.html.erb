@@ -24,8 +24,9 @@
       <%= render 'layouts/content_header' %>
 
       <div class="line"></div>
-      <%= yield %>
+      <%= render 'layouts/flash_messages' %>
       <div class="line"></div>
+      <%= yield %>
     </div>
   </body>
 
