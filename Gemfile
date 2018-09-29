@@ -36,6 +36,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
 gem 'pundit'
+gem "rolify"
 gem "attr_encrypted", "~> 3.0.0"
 
 group :development, :test do
