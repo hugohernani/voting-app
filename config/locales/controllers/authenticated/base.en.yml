@@ -1,0 +1,4 @@
+en:
+  authenticated:
+    base:
+      not_authorized: You're not authorized to perform this action
