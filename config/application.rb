@@ -25,9 +25,15 @@ module VotingApp
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
 
     config.generators do |g|
+      g.test_framework :rspec
+      g.view_specs false
+      g.helper_specs false
       g.assets false
       g.helper false
     end
+
+    # Set Active Job adapter to :sidekiq
+    config.active_job.queue_adapter = :sidekiq
 
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
