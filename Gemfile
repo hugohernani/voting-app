@@ -32,6 +32,17 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'faker', '~> 1.9.1'
+gem 'factory_girl_rails', '~> 4.7.0'
+gem "paranoia", "~> 2.2"
+
+
+gem 'sinatra', github: 'sinatra/sinatra', ref: "88a1ba7bfb2262b68391d2490dbb440184b9f838"
+gem 'sidekiq', '~> 4.2', '>= 4.2.2'
+gem 'will_paginate', '~> 3.0.4', github: 'jonatack/will_paginate'
+gem 'friendly_id', '~> 5.1.0'
+
+
 gem 'devise', '~> 4.5.0'
 gem 'pundit', '~> 2.0.0'
 gem "rolify", '~> 5.2.0'
