@@ -6,13 +6,14 @@ GIT
 
 GIT
   remote: https://github.com/sinatra/sinatra.git
-  revision: 88a1ba7bfb2262b68391d2490dbb440184b9f838
-  ref: 88a1ba7bfb2262b68391d2490dbb440184b9f838
+  revision: b7c10649cad56f3263df089027621fb1753620cb
   specs:
-    sinatra (2.0.0.pre.alpha)
-      mustermann (~> 0.4)
+    rack-protection (2.0.4)
+      rack
+    sinatra (2.0.4)
+      mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (~> 1.5)
+      rack-protection (= 2.0.4)
       tilt (~> 2.0)
 
 GEM
@@ -149,8 +150,7 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.4)
     multi_json (1.13.1)
-    mustermann (0.4.0)
-      tool (~> 0.2)
+    mustermann (1.0.3)
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
@@ -172,8 +172,6 @@ GEM
     pundit (2.0.0)
       activesupport (>= 3.0.0)
     rack (2.0.5)
-    rack-protection (1.5.5)
-      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.1)
@@ -268,7 +266,6 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.8)
-    tool (0.2.3)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.19)
@@ -303,7 +300,7 @@ DEPENDENCIES
   devise (~> 4.5.0)
   dotenv-rails (~> 2.5.0)
   factory_girl_rails (~> 4.7.0)
-  faker
+  faker (~> 1.9.1)
   foreman (~> 0.85.0)
   friendly_id (~> 5.1.0)
   jbuilder (~> 2.5)
@@ -323,7 +320,7 @@ DEPENDENCIES
   shoulda-matchers (~> 3.1.2)
   sidekiq (~> 4.2, >= 4.2.2)
   simplecov (~> 0.16.1)
-  sinatra!
+  sinatra (~> 2.0.4)!
   spring (~> 2.0.2)
   spring-commands-rspec (~> 1.0.4)
   spring-watcher-listen (~> 2.0.1)

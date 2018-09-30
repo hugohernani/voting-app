@@ -37,7 +37,7 @@ gem 'factory_girl_rails', '~> 4.7.0'
 gem "paranoia", "~> 2.2"
 
 
-gem 'sinatra', github: 'sinatra/sinatra', ref: "88a1ba7bfb2262b68391d2490dbb440184b9f838"
+gem 'sinatra', '~> 2.0.4', github: 'sinatra/sinatra'
 gem 'sidekiq', '~> 4.2', '>= 4.2.2'
 gem 'will_paginate', '~> 3.0.4', github: 'jonatack/will_paginate'
 gem 'friendly_id', '~> 5.1.0'
