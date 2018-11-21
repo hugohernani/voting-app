@@ -1,3 +1,4 @@
 class Authenticated::BaseController < ApplicationController
-  before_action :authenticate_account!
+  layout 'authenticated'
+  # before_action :authenticate_account!
 end

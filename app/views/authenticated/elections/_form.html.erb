@@ -1,0 +1,49 @@
+<%= form_with(model: election, url: admin_elections_path, local: true) do |form| %>
+  <%= render 'layouts/errors', resource: election %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_time %>
+    <%= form.datetime_select :start_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_time %>
+    <%= form.datetime_select :end_time %>
+  </div>
+
+  <div class="line"></div>
+
+  <div id="candidates" class="row">
+    <%= form.fields_for :candidates, Candidate.new do |candidate| %>
+      <%= render 'authenticated/elections/candidates_fields', f: candidate %>
+    <% end %>
+
+    <div class="col-sm-offset-3 links">
+      <%= link_to_add_association 'Add Candidate', form, :candidates,
+          partial: 'authenticated/elections/candidates_fields', class: "btn btn-secondary btn-xl" %>
+    </div>
+  </div>
+
+  <div class="line"></div>
+
+  <div id="voters" class="row">
+    <%= form.fields_for :voters, Voter.new do |voter| %>
+      <%= render 'authenticated/elections/voters_fields', f: voter %>
+    <% end %>
+    <div class="col-sm-offset-3 links">
+      <%= link_to_add_association 'Add Voter', form, :voters,
+          partial: 'authenticated/elections/voters_fields', class: "btn btn-secondary btn-xl" %>
+    </div>
+  </div>
+
+  <div class="line"></div>
+
+  <div class="actions">
+    <%= form.submit "Submit", class: "btn btn-primary btn-xl" %>
+  </div>
+<% end %>

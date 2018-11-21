@@ -1,0 +1,42 @@
+<p>
+  <strong>Name:</strong>
+  <%= @election.name %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @election.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @election.end_time %>
+</p>
+
+<p>
+  <strong>Voters Count:</strong>
+  <%= @election.voters_count %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="2" class="text-center"><h2>Candidates (<%= @election.candidates_count %>)</h2></th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @election.candidates.each do |candidate| %>
+      <tr>
+        <td><%= candidate.name %></td>
+        <td><%= candidate.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', admin_elections_path, class: "btn btn-dark btn-xl" %>

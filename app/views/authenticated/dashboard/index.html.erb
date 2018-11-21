@@ -1,0 +1,33 @@
+<%= link_to "New Election", new_admin_election_path, class: "btn btn-primary btn-xl float-right" %>
+
+<h1>Elections</h1>
+
+<% if @elections.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Start time</th>
+        <th>End time</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @elections.each do |election| %>
+        <tr>
+          <td><%= election.name %></td>
+          <td><%= l(election.start_time, format: :short) %></td>
+          <td><%= l(election.end_time, format: :short) %></td>
+          <td>
+            <%= link_to 'Show', admin_election_path(election), class: "btn btn-primary btn-xl" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+<h3 class="mb-5">
+  <em>There is not any election yet. <%= link_to "Try Creating One Now", new_admin_election_path, class: "btn btn-primary btn-xl" %> </em>
+</h3>
+<% end %>

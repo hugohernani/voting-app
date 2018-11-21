@@ -10,7 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery-3.3.1.min.js
+//= require jquery.js
+//= require jquery_ujs
+//= require cocoon
 //= require popper.min.js
 //= require bootstrap.min.js
 //= require jquery.mCustomScrollbar.concat.min.js

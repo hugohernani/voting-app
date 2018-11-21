@@ -1,0 +1,15 @@
+<div class="nested-fields col-sm-6" data-candadite-id="<%= f.object.id %>">
+  <div class="form-group row">
+    <div class="col-sm-5">
+      <%= f.text_field :name, placeholder: "Name", class: 'form-control' %>
+    </div>
+
+    <div class="col-sm-5">
+      <%= f.text_field :email, placeholder: "Email", class: 'form-control' %>
+    </div>
+
+    <div class="col-sm-1">
+      <%= link_to_remove_association "x", f, class: 'btn btn-xl btn-dark' %>
+    </div>
+  </div>
+</div>

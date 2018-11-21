@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_29_225637) do
+ActiveRecord::Schema.define(version: 2018_11_21_224930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,26 @@ ActiveRecord::Schema.define(version: 2018_09_29_225637) do
     t.index ["role_id"], name: "index_accounts_roles_on_role_id"
   end
 
+  create_table "candidates", force: :cascade do |t|
+    t.string "name"
+    t.integer "votes_count"
+    t.bigint "election_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email"
+    t.index ["election_id"], name: "index_candidates_on_election_id"
+  end
+
+  create_table "elections", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "voters_count", default: 0
+    t.integer "candidates_count", default: 0
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -57,4 +77,14 @@ ActiveRecord::Schema.define(version: 2018_09_29_225637) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "voters", force: :cascade do |t|
+    t.string "email"
+    t.bigint "election_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["election_id"], name: "index_voters_on_election_id"
+  end
+
+  add_foreign_key "candidates", "elections"
+  add_foreign_key "voters", "elections"
 end

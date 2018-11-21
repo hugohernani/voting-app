@@ -1,1 +1,17 @@
-<h1>HOME CONTENT</h1>
+<!-- Header -->
+<header class="masthead d-flex">
+  <div class="container text-center my-auto">
+    <h1 class="mb-1">Block Election</h1>
+    <h3 class="mb-5">
+      <em>An eletronic voting app through blockchain</em>
+    </h3>
+    <% if signed_in? %>
+      <p>You are already logged in</p>
+      <%= link_to 'Logout', destroy_account_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Register', new_account_registration_path, class: "btn btn-primary btn-xl" %>
+      <%= link_to 'Login', new_account_session_path, class: 'btn btn-secondary btn-xl' %>
+    <% end %>
+  </div>
+  <div class="overlay"></div>
+</header>
