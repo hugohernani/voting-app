@@ -1,5 +1,4 @@
 class Account < ApplicationRecord
-  rolify
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :trackable, :timeoutable, :lockable, :confirmable

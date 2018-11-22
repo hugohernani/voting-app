@@ -1,0 +1,10 @@
+<p>
+  You have accepted the invitation to be parted of the election: <strong><%= @candidate.election_name.titleize %></strong>.
+</p>
+<p>
+  This election is planned to start at <%= l(@candidate.election_start_time, format: :short) %> and end at <%= l(@candidate.election_end_time, format: :short) %>.
+</p>
+<p>
+  At the end of the process you will be able to see your voting account here. <br />
+  <%= link_to candidate_url(@candidate.id), candidate_url(@candidate.id) %>
+</p>

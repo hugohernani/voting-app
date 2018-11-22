@@ -1,0 +1,21 @@
+<header class="masthead d-flex">
+  <div class="container text-center my-auto">
+    <h1 class="mb-1">Candidate: <%= @candidate.name %></h1>
+    <h3 class="mb-5">
+      <em>Once the election has ended the amount of votes for this candidate will be available through the result page.</em>
+    </h3>
+    <h3 class="mb-5">
+      <% if @candidate.election_running? %>
+        <em><strong>Running</strong>. It goes from <%= l(@election.start_time, format: :short) %> to <%= l(@election.end_time, format: :short) %></em>
+      <% else %>
+        <em><strong>Closed</strong>. Click on the results link to see the votes for all candidates.</em>
+      <% end %>
+    </h3>
+
+    <% if policy(@candidate.election).reveal_result? %>
+      <h1>Votes received: <%= @candidate.votes_count %></h1>
+      <h2><%= link_to "Result", election_url(@candidate.election), class: "btn btn-primary btn-xl" %></h2>
+    <% end %>
+  </div>
+  <div class="overlay"></div>
+</header>

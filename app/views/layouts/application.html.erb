@@ -22,6 +22,10 @@
 
   </head>
   <body id="page-top">
+    <% if flash.any? %>
+      <%= render 'layouts/flash_messages' %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

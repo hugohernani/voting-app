@@ -1,0 +1,11 @@
+<p>
+  You've being invited to the following election on <%= link_to root_url, root_url %>: <strong><%= @candidate.election_name %></strong>.
+</p>
+<p>
+  This election is planned to start at <%= l(@candidate.election_start_time, format: :short) %>
+  and to end at <%= l(@candidate.election_end_time, format: :short) %>.
+</p>
+<p>
+  To be acounted as one of the following candidates you have to accept this invitation by clicking in the following link: <br />
+  <%= link_to edit_candidate_url(@candidate.id), edit_candidate_url(@candidate.id), class: "btn btn-primary btn-xl" %>
+</p>

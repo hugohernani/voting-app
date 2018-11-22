@@ -1,0 +1,14 @@
+<header class="masthead d-flex">
+  <div class="container text-center my-auto">
+    <h1 class="mb-1">Voting for <%= @candidate.name %></h1>
+    <h3 class="mb-5">
+      <em>Place your ID to confirm your vote</em>
+    </h3>
+
+    <%= render 'form', candidate_id: @candidate.id, election_id: @election.id %>
+
+  </div>
+  <div class="overlay"></div>
+</header>
+
+<%= link_to 'Back', voters_url(@election), class: "btn btn-dark btn-xl" %>

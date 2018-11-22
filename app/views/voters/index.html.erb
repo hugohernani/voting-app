@@ -1,0 +1,31 @@
+<header class="masthead d-flex">
+  <div class="container text-center my-auto">
+    <h1 class="mb-1">Election: <%= @election.name.titleize %></h1>
+    <h3 class="mb-5">
+      <em>Click in the button at the right side of your candidate to make your choice.</em>
+    </h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2" class="text-center"><h2>Voting</h2></th>
+        </tr>
+        <tr>
+          <th>Candidate</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @election.candidates.each do |candidate| %>
+          <tr>
+            <td><%= candidate.name %></td>
+            <td><%= link_to "Choose", new_vote_path(candidate_id: candidate.id), class: "btn btn-secondary btn-xl" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="overlay"></div>
+</header>

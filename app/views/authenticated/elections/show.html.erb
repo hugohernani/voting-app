@@ -14,8 +14,13 @@
 </p>
 
 <p>
-  <strong>Voters Count:</strong>
+  <strong>Amount of invited voters:</strong>
   <%= @election.voters_count %>
+</p>
+
+<p>
+  <strong>Amount of accepted voters:</strong>
+  <%= @election.ballots_count %>
 </p>
 
 <table>
@@ -39,4 +44,4 @@
   </tbody>
 </table>
 
-<%= link_to 'Back', admin_elections_path, class: "btn btn-dark btn-xl" %>
+<%= link_to 'Back', admin_dashboard_index_path, class: "btn btn-dark btn-xl" %>

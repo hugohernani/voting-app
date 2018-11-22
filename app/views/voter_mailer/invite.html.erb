@@ -1,0 +1,12 @@
+<p>
+  You have being counted as a voter on the election: <%= @election.name.titleize %>.
+</p>
+<p>
+  This election is planned to start at <%= l(@election.start_time) %> and ends at <%= t(@election.end_time) %>.
+</p>
+<p>
+  During the election you will <strong>only</strong> be able to vote using the following code: <strong><%= @ballot.id %></strong>.
+</p>
+<p>
+  To do so, go to this link during the election: <%= link_to voters_url(election_id: @election.id), voters_url(election_id: @election.id) %>
+</p>

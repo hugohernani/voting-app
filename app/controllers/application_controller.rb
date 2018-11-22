@@ -9,18 +9,20 @@ class ApplicationController < ActionController::Base
     admin_dashboard_index_path
   end
 
-  private
+  protected
   def pundit_user
     current_account
   end
 
-  def record_not_found_error
-    flash[:error] = t('base.record_not_found')
-    redirect_to dashboard_path
+  def record_not_found_error(exception)
+    flash[:danger] = t("#{exception.model.downcase}", scope: 'record_not_found', default: :default)
+    redirect_to root_path
   end
 
-  def account_not_authorized
-    flash[:alert] = t('admin.authenticated.not_authorized')
-    redirect_to(request.referrer || root_path) # TODO update with dashboard_path
+  def account_not_authorized(exception)
+    policy_name = exception.policy.class.to_s.underscore
+
+    flash[:danger] = t("#{policy_name}.#{exception.query}", scope: "pundit", default: :default)
+    redirect_to(request.referrer || root_path)
   end
 end

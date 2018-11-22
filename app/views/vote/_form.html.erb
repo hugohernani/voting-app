@@ -1,0 +1,15 @@
+<%= form_with(model: Ballot.new, url: vote_index_path, local: true) do |form| %>
+  <%= render 'layouts/errors', resource: form.object %>
+
+  <%= form.hidden_field :candidate_id, value: candidate_id %>
+  <%= form.hidden_field :election_id, value: election_id %>
+
+  <div class="field">
+    <%= form.label :id, "Your unique id" %>
+    <%= form.text_field :id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit", class: "btn btn-primary btn-xl" %>
+  </div>
+<% end %>

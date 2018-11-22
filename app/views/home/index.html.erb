@@ -6,7 +6,8 @@
       <em>An eletronic voting app through blockchain</em>
     </h3>
     <% if signed_in? %>
-      <p>You are already logged in</p>
+      <p>You are logged in.</p>
+      <%= link_to 'Dashboard', admin_dashboard_index_path, class: "btn btn-primary btn-xl" %>
       <%= link_to 'Logout', destroy_account_session_path, method: :delete %>
     <% else %>
       <%= link_to 'Register', new_account_registration_path, class: "btn btn-primary btn-xl" %>

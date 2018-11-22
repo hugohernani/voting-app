@@ -1,0 +1,39 @@
+<header class="masthead d-flex">
+  <div class="container text-center my-auto">
+    <h1 class="mb-1">Election: <%= @election.name.titleize %></h1>
+    <h3 class="mb-5">
+      <% if @election.running? %>
+        <em><strong>Running</strong>. It goes from <%= l(@election.start_time, format: :short) %> to <%= l(@election.end_time, format: :short) %></em>
+      <% else %>
+        <em><strong>Closed</strong>. Check the results below</em>
+      <% end %>
+    </h3>
+
+    <% if policy(@election).reveal_result? %>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2" class="text-center"><h2>Results</h2></th>
+        </tr>
+
+        <tr>
+          <th>Candidate</th>
+          <th>Votes Count</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @election.candidates.order(:votes_count).each do |candidate| %>
+          <tr>
+            <td><%= candidate.name %></td>
+            <td><%= candidate.votes_count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <% end %>
+
+  </div>
+  <div class="overlay"></div>
+</header>
