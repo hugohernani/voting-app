@@ -1,6 +1,7 @@
 module Blockchain
   class Transactions < ApiHandler
     def initialize
+      super()
     end
 
     def startElection
