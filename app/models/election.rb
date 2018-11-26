@@ -1,6 +1,7 @@
 class Election < ApplicationRecord
   validates :name, :start_time, :end_time, presence: true
 
+  belongs_to :account,              class_name: "Account"
   has_many :candidates,             class_name: "Candidate",
                                     dependent: :destroy
   has_many :voters,                 class_name: "Voter",

@@ -11,7 +11,7 @@ module Authenticated
 
     def create
       authorize Election, :admin_create?
-      @election = Election.new(election_params)
+      @election = current_account.elections.new(election_params)
 
       if @election.save
         ElectionsCreateService.new(@election).perform

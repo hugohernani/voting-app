@@ -1,7 +1,7 @@
 module Authenticated
   class DashboardController < BaseController
     def index
-      @elections = Election.all
+      @elections = current_account.elections
     end
   end
 end

@@ -2,7 +2,7 @@
   You have being counted as a voter on the election: <%= @election.name.titleize %>.
 </p>
 <p>
-  This election is planned to start at <%= l(@election.start_time) %> and ends at <%= t(@election.end_time) %>.
+  This election is planned to start at <%= l(@election.start_time, format: :short) %> and ends at <%= l(@election.end_time, format: :short) %>.
 </p>
 <p>
   During the election you will <strong>only</strong> be able to vote using the following code: <strong><%= @ballot.id %></strong>.

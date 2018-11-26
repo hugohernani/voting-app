@@ -1,2 +1,15 @@
 en:
   hello: "Hello world"
+  record_not_found:
+    default: "This record was not found"
+    ballot: "This Ballot id does not exist"
+  pundit:
+    default: You're not authorized to perform this action
+    election_policy:
+      running?: This election has already ended. You are not authorized to perform this action
+      reveal_result?: The election has not ended yet. You are not authorized to perform this action
+    ballot_policy:
+      create?: This ballot is already counted. Voting twice is not allowed.
+  admin:
+    authenticated:
+      not_authorized:

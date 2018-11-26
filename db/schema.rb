@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_224930) do
+ActiveRecord::Schema.define(version: 2018_11_22_074510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,21 +39,26 @@ ActiveRecord::Schema.define(version: 2018_11_21_224930) do
     t.index ["unlock_token"], name: "index_accounts_on_unlock_token", unique: true
   end
 
-  create_table "accounts_roles", id: false, force: :cascade do |t|
-    t.bigint "account_id"
-    t.bigint "role_id"
-    t.index ["account_id", "role_id"], name: "index_accounts_roles_on_account_id_and_role_id"
-    t.index ["account_id"], name: "index_accounts_roles_on_account_id"
-    t.index ["role_id"], name: "index_accounts_roles_on_role_id"
+  create_table "ballots", id: false, force: :cascade do |t|
+    t.string "id", null: false
+    t.bigint "candidate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "voted", default: false
+    t.bigint "election_id"
+    t.index ["candidate_id"], name: "index_ballots_on_candidate_id"
+    t.index ["election_id"], name: "index_ballots_on_election_id"
+    t.index ["id"], name: "index_ballots_on_id", unique: true
   end
 
   create_table "candidates", force: :cascade do |t|
     t.string "name"
-    t.integer "votes_count"
+    t.integer "votes_count", default: 0
     t.bigint "election_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email"
+    t.boolean "accepted_election_invitation", default: false
     t.index ["election_id"], name: "index_candidates_on_election_id"
   end
 
@@ -65,16 +70,9 @@ ActiveRecord::Schema.define(version: 2018_11_21_224930) do
     t.datetime "updated_at", null: false
     t.integer "voters_count", default: 0
     t.integer "candidates_count", default: 0
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "name"
-    t.string "resource_type"
-    t.bigint "resource_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
-    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+    t.integer "ballots_count", default: 0
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_elections_on_account_id"
   end
 
   create_table "voters", force: :cascade do |t|
@@ -85,6 +83,9 @@ ActiveRecord::Schema.define(version: 2018_11_21_224930) do
     t.index ["election_id"], name: "index_voters_on_election_id"
   end
 
+  add_foreign_key "ballots", "candidates"
+  add_foreign_key "ballots", "elections"
   add_foreign_key "candidates", "elections"
+  add_foreign_key "elections", "accounts"
   add_foreign_key "voters", "elections"
 end
