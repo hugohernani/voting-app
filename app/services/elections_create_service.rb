@@ -34,8 +34,8 @@ class ElectionsCreateService
   end
 
   def schedule_election_status_on_blockchain
-    NotifyBlockchainElectionStarted.perform_at(election.start_time, election.id)
-    NotifyBlockchainElectionEnded.perform_at(election.end_time, election.id)
+    NotifyBlockchainElectionStartedWorker.perform_at(election.start_time, election.id)
+    NotifyBlockchainElectionEndedWorker.perform_at(election.end_time, election.id)
   end
 
   def notify_candidate(candidate)
