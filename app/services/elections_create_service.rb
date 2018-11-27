@@ -26,7 +26,7 @@ class ElectionsCreateService
   attr_reader :election, :manager
 
   def add_election_on_blockchain(ballot_ids)
-    AddElectionThroughBlockchain.perform_async(election.id, ballot_ids)
+    AddElectionThroughBlockchainWorker.perform_async(election.id, ballot_ids)
   end
 
   def update_blockchain_and_schedule_election_clean_up
