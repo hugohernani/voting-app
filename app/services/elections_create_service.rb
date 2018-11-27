@@ -1,5 +1,5 @@
 class ElectionsCreateService
-  def initialize(election, manager)
+  def initialize(election)
     @election = election
     @manager = election.account
   end
