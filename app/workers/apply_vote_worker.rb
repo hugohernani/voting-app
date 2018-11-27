@@ -1,3 +1,5 @@
+require 'blockchain/transactions'
+
 class ApplyVoteWorker
   include Sidekiq::Worker
 

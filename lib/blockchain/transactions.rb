@@ -1,24 +1,26 @@
+require 'blockchain/api_handler'
+
 module Blockchain
   class Transactions < ApiHandler
     def initialize
       super()
     end
 
-    def startElection
+    def startElection(election_id)
       @api['startElection'].post({
         "$class": "ufal.voting.network.StartElection",
         "election_id": election_id
       })
     end
 
-    def endElection
+    def endElection(election_id)
       @api['endElection'].post({
         "$class": "ufal.voting.network.EndElection",
         "election_id": election_id
       })
     end
 
-    def addElection(manager_id, election, voter_ids)
+    def addElection(election, voter_ids)
       @api['createElection'].post({
         "$class": "ufal.voting.network.CreateElection",
         "election_id": election.id,
@@ -26,7 +28,7 @@ module Blockchain
         "start_time": election.start_time,
         "end_time": election.end_time,
         "allowed_voter_ids": voter_ids,
-        "manager_id": manager_id
+        "manager_id": election.account_id
         })
     end
 

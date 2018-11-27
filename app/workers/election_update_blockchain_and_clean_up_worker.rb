@@ -1,3 +1,5 @@
+require 'blockchain/transactions'
+
 class ElectionUpdateBlockchainAndCleanUpWorker
   include Sidekiq::Worker
 

@@ -1,3 +1,5 @@
+require 'blockchain/transactions'
+
 class NotifyBlockchainElectionEndedWorker
   include Sidekiq::Worker
 

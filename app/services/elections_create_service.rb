@@ -15,18 +15,18 @@ class ElectionsCreateService
     election.voters.each do |voter|
       ballot = voter.create_vote_resource!
       notify_voter(voter, ballot)
-      ballots_ids.push(ballot.id)
+      ballot_ids.push(ballot.id)
     end
 
-    add_election_on_blockchain(ballot_ids, ballot_ids)
+    add_election_on_blockchain(ballot_ids)
     update_blockchain_and_schedule_election_clean_up
   end
 
   private
-  attr_reader :election
+  attr_reader :election, :manager
 
   def add_election_on_blockchain(ballot_ids)
-    AddElectionThroughBlockchain.perform_async(election.id, manager.id, ballot_ids)
+    AddElectionThroughBlockchain.perform_async(election.id, ballot_ids)
   end
 
   def update_blockchain_and_schedule_election_clean_up
