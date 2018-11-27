@@ -1,7 +1,7 @@
 class ElectionsCreateService
   def initialize(election, manager)
     @election = election
-    @manager = manager
+    @manager = election.account
   end
 
   def perform
