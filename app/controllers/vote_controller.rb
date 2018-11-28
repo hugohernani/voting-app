@@ -10,6 +10,7 @@ class VoteController < ApplicationController
     authorize ballot
     if ballot.update(voted: true, candidate_id: ballot_params[:candidate_id], election_id: ballot_params[:election_id])
       ApplyVoteWorker.perform_async(ballot_id)
+      update_candidates_counting
       flash[:success] = "Your vote has being counted."
       redirect_to election_path(ballot.election)
     end
@@ -23,5 +24,10 @@ class VoteController < ApplicationController
   private
   def ballot_params
     params.require(:ballot).permit(:id, :candidate_id, :election_id)
+  end
+
+  def update_candidates_counting
+    candidate = Candidate.find ballot_params[:candidate_id]
+    candidate.increment!(:votes_count)
   end
 end

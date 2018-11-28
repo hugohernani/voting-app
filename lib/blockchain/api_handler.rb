@@ -8,5 +8,7 @@ module Blockchain
         content_type: 'application/json', accept: 'application/json'
       })
     end
+
+    attr_reader :api
   end
 end

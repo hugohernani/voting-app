@@ -9,6 +9,10 @@ class Account < ApplicationRecord
     devise_mailer.send(notification, self, *args).deliver_later
   end
 
+  def after_confirmation
+    RegisterManagerOnBlockchainWorker.perform_async(self.id)
+  end
+
   # def timeout_in
   #   if self.poll_manager?
   #     6.hours

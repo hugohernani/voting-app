@@ -15,7 +15,7 @@ class ElectionsCreateService
     election.voters.each do |voter|
       ballot = voter.create_vote_resource!
       notify_voter(voter, ballot)
-      ballot_ids.push(ballot.id)
+      ballot_ids.push(ballot.id.to_s)
     end
 
     add_election_on_blockchain(ballot_ids)
