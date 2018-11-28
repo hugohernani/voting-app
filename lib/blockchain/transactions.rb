@@ -7,11 +7,11 @@ module Blockchain
     end
 
     def createManager(account)
-      @api['Manager'].post(
+      @api['Manager'].post({
         "$class": "ufal.voting.network.Manager",
         "manager_id": account.id.to_s,
         "email": account.email
-      })
+      }.to_json)
     end
 
     def startElection(election_id)
