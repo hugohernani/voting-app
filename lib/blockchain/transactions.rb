@@ -47,10 +47,7 @@ module Blockchain
         "candidates": candidates_info,
         "voter_emails": voters,
       }
-      puts "Request details below. Debugging."
-      p request
-      p request.to_json
-      @api['createElection'].post(request.to_json)
+      @api['addElectionMembers'].post(request.to_json)
     end
 
     def makeVote(vote)
