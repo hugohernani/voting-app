@@ -41,12 +41,16 @@ module Blockchain
     end
 
     def addElectionMembers(election_id, candidates_info, voters)
-      @api['createElection'].post({
+      request = {
         "$class": "ufal.voting.network.AddElectionMembers",
         "election_id": election_id.to_s,
         "candidates": candidates_info,
         "voter_emails": voters,
-      }.to_json)
+      }
+      puts "Request details below. Debugging."
+      p request
+      p request.to_json
+      @api['createElection'].post(request.to_json)
     end
 
     def makeVote(vote)

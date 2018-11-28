@@ -5,8 +5,6 @@ class ElectionsCreateService
   end
 
   def perform
-    schedule_election_status_on_blockchain
-
     election.candidates.each do |candidate|
       notify_candidate(candidate)
     end
@@ -31,11 +29,6 @@ class ElectionsCreateService
 
   def update_blockchain_and_schedule_election_clean_up
     ElectionUpdateBlockchainAndCleanUpWorker.perform_async(election.id)
-  end
-
-  def schedule_election_status_on_blockchain
-    NotifyBlockchainElectionStartedWorker.perform_at(election.start_time, election.id)
-    NotifyBlockchainElectionEndedWorker.perform_at(election.end_time, election.id)
   end
 
   def notify_candidate(candidate)

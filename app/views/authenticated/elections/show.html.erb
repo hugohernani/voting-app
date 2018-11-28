@@ -5,12 +5,12 @@
 
 <p>
   <strong>Start time:</strong>
-  <%= @election.start_time %>
+  <%= l(@election.start_time, format: :short) %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @election.end_time %>
+  <%= l(@election.end_time, format: :short) %>
 </p>
 
 <p>
