@@ -104,6 +104,7 @@ Rails.application.configure do
   }
 
   config.action_mailer.default_url_options = {
-    host: ENV['HOST_URL'] || 'localhost'
+    host: ENV['HOST_URL'] || 'localhost',
+    protocol: :https
   }
 end
