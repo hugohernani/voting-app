@@ -5,6 +5,7 @@ class ElectionsCreateService
   end
 
   def perform
+    add_election_on_blockchain(ballot_ids)
     schedule_election_status_on_blockchain
 
     election.candidates.each do |candidate|
@@ -18,7 +19,6 @@ class ElectionsCreateService
       ballot_ids.push(ballot.id.to_s)
     end
 
-    add_election_on_blockchain(ballot_ids)
     update_blockchain_and_schedule_election_clean_up
   end
 
