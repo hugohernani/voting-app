@@ -33,8 +33,8 @@ module Blockchain
         "$class": "ufal.voting.network.CreateElection",
         "election_id": election.id.to_s,
         "title": election.name,
-        "start_time": election.start_time.to_s,
-        "end_time": election.end_time.to_s,
+        "start_time": election.start_time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+        "end_time": election.end_time.strftime("%Y-%m-%dT%H:%M:%S%z"),
         "allowed_voter_ids": voter_ids,
         "manager_id": election.account_id.to_s
       }.to_json)
