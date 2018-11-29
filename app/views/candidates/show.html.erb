@@ -6,7 +6,7 @@
     </h3>
     <h3 class="mb-5">
       <% if @candidate.election_running? %>
-        <em><strong>Running</strong>. It goes from <%= l(@election.start_time, format: :short) %> to <%= l(@election.end_time, format: :short) %></em>
+        <em><strong>Running</strong>. It goes from <%= l(@candidate.election.start_time, format: :short) %> to <%= l(@candidate.election.end_time, format: :short) %></em>
       <% else %>
         <em><strong>Closed</strong>. Click on the results link to see the votes for all candidates.</em>
       <% end %>

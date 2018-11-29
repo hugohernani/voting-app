@@ -41,7 +41,6 @@ module Blockchain
     end
 
     def addElectionMembers(election_id, candidates_info, voters)
-      p request
       request = {
         "$class": "ufal.voting.network.AddElectionMembers",
         "election_id": election_id.to_s,
