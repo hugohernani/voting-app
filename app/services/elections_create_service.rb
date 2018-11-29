@@ -28,7 +28,7 @@ class ElectionsCreateService
   end
 
   def update_blockchain_and_schedule_election_clean_up
-    ElectionUpdateBlockchainAndCleanUpWorker.perform_async(election.id)
+    ElectionUpdateBlockchainAndCleanUpWorker.perform_at(election.start_time, election.id)
   end
 
   def notify_candidate(candidate)
